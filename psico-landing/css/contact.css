@@ -1,0 +1,111 @@
+/* ==========================================================================
+   Seção Contato
+   ========================================================================== */
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.contact-grid {
+  grid-template-columns: 1fr 1.3fr;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+h2.contact-heading {
+  font-family: var(--font-primary);
+  font-size: clamp(2.5rem, 1.8rem + 3vw, 4rem) !important;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+  margin: 0;
+}
+
+.contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: var(--color-white);
+}
+
+.contact-link {
+  font-size: 1.15rem;
+  color: var(--color-white);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contact-link:hover {
+  opacity: 0.8;
+}
+
+.contact-address {
+  font-size: 1.15rem;
+  color: var(--color-white);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contact-map {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 40px -18px rgba(31, 58, 77, 0.35);
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .contact-map {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ==========================================================================
+   Rodapé
+   ========================================================================== */
+.site-footer {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.footer-copy {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  margin-bottom: 0.75rem;
+}
+
+.footer-legal {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+}

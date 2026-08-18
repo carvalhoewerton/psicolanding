@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Quem sou eu
+   ========================================================================== */
+.about {
+    padding: 5rem 0;
+}
+
+.about-content {
+    max-width: 46ch;
+}
+
+.about-content--solo {
+    max-width: 68ch;
+}
+
+.about-heading {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-light);
+    margin-bottom: 1.75rem;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+}
+
+.about-text p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--color-white);
+    opacity: 0.94;
+}
+
+.about-text strong {
+    font-weight: 700;
+    opacity: 1;
+}
+
+/* Variação para quando a seção usa fundo claro (section-tint) */
+.section-tint .about-heading {
+    color: var(--color-primary);
+}
+
+.section-tint .about-text p {
+    color: var(--color-dark);
+    opacity: 0.82;
+}
+
+@media (max-width: 600px) {
+    .about {
+        padding: 3.5rem 0;
+    }
+}
