@@ -8,6 +8,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Geist';
   src: url('../assets/fonts/geist-sans-latin-500-normal.woff2') format('woff2');
@@ -15,6 +16,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Geist';
   src: url('../assets/fonts/geist-sans-latin-600-normal.woff2') format('woff2');
@@ -22,6 +24,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Geist';
   src: url('../assets/fonts/geist-sans-latin-700-normal.woff2') format('woff2');
@@ -34,18 +37,18 @@
    Paleta de cores — Acolhimento Azul
    ========================================================================== */
 :root {
-  --color-primary: #3C5045;       /* Verde floresta — botões, fundo de seções, hover */
-  --color-dark: #14170F;          /* Verde quase-preto — títulos e textos */
-  --color-light: #EDF2EE;         /* Verde-menta pálido — seções claras alternativas */
-  --color-bg-soft: #F9F8F4;       /* Bege-creme — fundo principal (header/hero) */
-  --color-white: #FFFFFF;         /* Branco — texto sobre fundos escuros */
-  --color-accent: #626962;        /* Verde-acinzentado — ícones e detalhes */
+  --color-primary: #3C5045;
+  --color-dark: #14170F;
+  --color-light: #EDF2EE;
+  --color-bg-soft: #F9F8F4;
+  --color-white: #FFFFFF;
+  --color-accent: #626962;
 
   /* Tipografia */
   --font-primary: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: Georgia, 'Times New Roman', serif;
 
-  /* Espaçamentos base (ajustar conforme layout) */
+  /* Espaçamentos base */
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 2rem;
@@ -70,6 +73,10 @@
 
 html {
   scroll-behavior: smooth;
+
+  /* Impede hifenização automática no Safari/iOS */
+  -webkit-hyphens: none;
+  hyphens: none;
 }
 
 body {
@@ -79,13 +86,26 @@ body {
   background-color: var(--color-white);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+
+  /* Impede hifenização automática */
+  -webkit-hyphens: none;
+  hyphens: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-primary);
   font-weight: 600;
   color: var(--color-dark);
   line-height: 1.2;
+
+  /* Nunca hifenizar palavras automaticamente */
+  -webkit-hyphens: none;
+  hyphens: none;
 }
 
 a {
@@ -115,7 +135,10 @@ button {
   html {
     scroll-behavior: auto;
   }
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -134,7 +157,6 @@ button {
 
 /* ==========================================================================
    Seções alternadas — azul escuro / azul claro
-   Usar essas classes em cada <section> para manter o ritmo visual da página.
    ========================================================================== */
 .section-dark {
   background-color: var(--color-dark);
@@ -190,9 +212,7 @@ button {
 }
 
 /* ==========================================================================
-   Seção dividida (imagem + texto) — componente reutilizável
-   A ordem das colunas segue a ordem do HTML: para alternar o lado da
-   imagem, basta mudar a ordem de .split-media e .split-content no markup.
+   Seção dividida (imagem + texto)
    ========================================================================== */
 .split-grid {
   display: grid;
@@ -269,40 +289,65 @@ button {
    Painel gradiente — alternativa a foto quando não há imagem disponível
    ========================================================================== */
 .gradient-panel {
-  background: linear-gradient(145deg, var(--color-primary) 0%, var(--color-light) 65%, var(--color-bg-soft) 100%);
+  background: linear-gradient(
+          145deg,
+          var(--color-primary) 0%,
+          var(--color-light) 65%,
+          var(--color-bg-soft) 100%
+  );
   border-radius: var(--radius-lg);
   min-height: 320px;
   box-shadow: 0 20px 40px -18px rgba(31, 58, 77, 0.35);
 }
 
 .gradient-panel--deep {
-  background: linear-gradient(145deg, var(--color-dark) 0%, var(--color-primary) 70%, var(--color-accent) 100%);
+  background: linear-gradient(
+          145deg,
+          var(--color-dark) 0%,
+          var(--color-primary) 70%,
+          var(--color-accent) 100%
+  );
 }
 
 /* ==========================================================================
-   Correções de Responsividade (Mobile) - Forçado
+   Correções de Responsividade
    ========================================================================== */
 
-/* 1. Garante que todas as seções tenham espaçamento no topo e na base (Desktop) */
+/* Garante espaçamento padrão entre as seções */
 section {
   padding: 5rem 0;
 }
 
-/* 2. Regra restrita para evitar qualquer vazamento horizontal na página */
-html, body {
+/* Impede vazamento horizontal */
+html,
+body {
   overflow-x: hidden;
   width: 100%;
 }
 
-/* 3. Impede que textos grandes quebrem o layout da tela */
-h1, h2, h3, .about-heading, .faq-heading {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+/* ==========================================================================
+   Títulos — sem hifenização automática
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+.about-heading,
+.faq-heading {
+  /*
+   * Permite quebra normal entre palavras.
+   * Não permite que o navegador coloque hífen automaticamente.
+   */
+  word-wrap: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  -webkit-hyphens: none;
+  hyphens: none;
 }
 
-/* 4. Ajustes específicos para telas menores (celulares) */
+/* ==========================================================================
+   Ajustes específicos para telas menores
+   ========================================================================== */
 @media (max-width: 900px) {
   section {
     padding: 3rem 0 !important;
@@ -311,9 +356,19 @@ h1, h2, h3, .about-heading, .faq-heading {
   .about-heading,
   .faq-heading {
     font-size: 1.8rem !important;
+
+    /*
+     * Permite quebra entre palavras normalmente,
+     * mas nunca no meio da palavra.
+     */
     white-space: normal !important;
-    word-break: break-word !important;
-    hyphens: auto !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+
+    /* Desativa completamente a hifenização */
+    -webkit-hyphens: none !important;
+    hyphens: none !important;
+
     line-height: 1.2 !important;
     max-width: 100% !important;
     margin-bottom: 1.5rem;
