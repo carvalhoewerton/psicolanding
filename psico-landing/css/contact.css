@@ -56,6 +56,12 @@ h2.contact-heading {
   text-underline-offset: 4px;
 }
 
+.contact-link-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
 .contact-link:hover {
   opacity: 0.8;
 }
